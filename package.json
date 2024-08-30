@@ -1,0 +1,22 @@
+{
+  "name": "intro-test-jasmine",
+  "version": "1.0.0",
+  "description": "Course Link: https://www.linkedin.com/learning/learning-unit-testing-with-jasmine/setting-up-jasmine-from-scratch",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhiroop25902/intro-test-jasmine.git"
+  },
+  "author": "Abhiroop Mukherjee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhiroop25902/intro-test-jasmine/issues"
+  },
+  "homepage": "https://github.com/Abhiroop25902/intro-test-jasmine#readme",
+  "devDependencies": {
+    "prettier": "^3.3.3"
+  }
+}
