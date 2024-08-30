@@ -13,4 +13,4 @@ class Person {
 /**
  * Test Suite
  */
-describe("Person", () => {});
+describe(`${Person.name} Class`, () => {});
