@@ -75,4 +75,32 @@ describe(`${Person.name} Class`, () => {
       expect(window.alert).toHaveBeenCalledWith(model.fullName);
     });
   });
+
+  describe("get code name", () => {
+    it("should return positive case", () => {
+      //arrange
+      spyOn(window, "confirm").and.returnValue(true);
+
+      //act
+      const actualValue = model.getCodeName();
+
+      //assert
+      const expectedValue = "TESTING GOD!";
+      expect(expectedValue).toBe(actualValue);
+      expect(window.confirm).toHaveBeenCalledWith("Are you a testing god?");
+    });
+
+    it("should return negative case", () => {
+      //arrange
+      spyOn(window, "confirm").and.returnValue(false);
+
+      //act
+      const actualValue = model.getCodeName();
+
+      //assert
+      const expectedValue = "Scrub Skipping tests in his best friend's ride";
+      expect(expectedValue).toBe(actualValue);
+      expect(window.confirm).toHaveBeenCalledWith("Are you a testing god?");
+    });
+  });
 });
