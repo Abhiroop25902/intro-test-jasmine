@@ -160,4 +160,17 @@ describe(`${Person.name} Class`, () => {
       expect(actualValue).toEqual(expectedValue);
     });
   });
+
+  describe("additional matches testing area", () => {
+    it("should match that fullName has firstName", () => {
+      //arrange
+      const firstName = "Dylan";
+      const lastName = "Israel";
+      //act
+      model = new Person({ firstName: firstName, lastName: lastName });
+      //assert
+      const re = new RegExp(String.raw`${firstName}`);
+      expect(model.fullName).toMatch(re);
+    });
+  });
 });
