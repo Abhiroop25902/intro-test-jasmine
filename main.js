@@ -58,4 +58,21 @@ describe(`${Person.name} Class`, () => {
       expect(actualResult).toEqual(expectedResult);
     });
   });
+
+  describe("say my name", () => {
+    it("should alert the full name of the user", () => {
+      //arrange
+      model.firstName = "Dylan";
+      model.lastNam = "Israel";
+
+      spyOn(window, "alert");
+
+      //act
+      model.sayMyName();
+
+      //assert
+      expect(window.alert).toHaveBeenCalled();
+      expect(window.alert).toHaveBeenCalledWith(model.fullName);
+    });
+  });
 });
