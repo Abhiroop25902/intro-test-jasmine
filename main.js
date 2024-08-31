@@ -4,6 +4,11 @@
  * Test Suite
  */
 describe(`${Person.name} Class`, () => {
+  it("should exists", () => {
+    //assert
+    expect(Person).toBeDefined();
+  });
+
   let model;
   let mockPersonService;
   beforeEach(() => {
@@ -136,6 +141,23 @@ describe(`${Person.name} Class`, () => {
       const result = await model.getMyFullUserData();
       //assert
       expect(mockPersonService.lastId).toBe(1);
+    });
+  });
+
+  describe("additional matchers Examples", () => {
+    it("should get fullNamePieces", () => {
+      //arrange
+      const firstName = "Dylan";
+      const middleName = "Christopher";
+      const lastName = "Israel";
+
+      //act
+      model = new Person({ firstName, middleName, lastName });
+      const actualValue = model.fullNamePieces;
+      const expectedValue = [firstName, middleName, lastName];
+
+      //assert
+      expect(actualValue).toEqual(expectedValue);
     });
   });
 });
