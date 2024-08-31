@@ -2,11 +2,16 @@ class Person {
   firstName;
   lastName;
   middleName;
+  id;
+  fullNamePieces;
 
-  constructor(data = {}) {
+  constructor(data = {}, personService) {
     this.firstName = data.firstName || "";
     this.lastName = data.lastName || "";
     this.middleName = data.middleName || "";
+    this.fullNamePieces = [data.firstName, data.middleName, data.lastName];
+    this.id = data.id;
+    this.personService = personService;
   }
 
   get fullName() {
@@ -15,6 +20,10 @@ class Person {
     }
 
     return `${this.firstName} ${this.lastName}`;
+  }
+
+  async getMyFullUserData() {
+    return this.personService.getUserById(this.id);
   }
 
   sayMyName() {

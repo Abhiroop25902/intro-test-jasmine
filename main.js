@@ -5,11 +5,29 @@
  */
 describe(`${Person.name} Class`, () => {
   let model;
+  let mockPersonService;
   beforeEach(() => {
-    model = new Person();
+    const data = {
+      firstName: "Dylan",
+      middleName: "Christopher",
+      lastName: "Israel",
+      id: 1,
+    };
+    mockPersonService = {
+      lastId: null,
+      user: {},
+      getUserById(id) {
+        this.lastId = id;
+        return this.user;
+      },
+    };
+    model = new Person(data, mockPersonService);
   });
 
   describe("Default Values", () => {
+    beforeEach(() => {
+      model = new Person();
+    });
     it("should default first name to empty string if not given in constructor", () => {
       // assert
       expect(model.firstName).toBe("");
@@ -101,6 +119,23 @@ describe(`${Person.name} Class`, () => {
       const expectedValue = "Scrub Skipping tests in his best friend's ride";
       expect(expectedValue).toBe(actualValue);
       expect(window.confirm).toHaveBeenCalledWith("Are you a testing god?");
+    });
+  });
+
+  describe("getMyFullUserData", () => {
+    it("should get user data by id", async () => {
+      //arrange
+      mockPersonService.lastId = null;
+      mockPersonService.user = {
+        firstName: "Dylan",
+        middleName: "Christopher",
+        lastName: "Israel",
+        id: 1,
+      };
+      //act
+      const result = await model.getMyFullUserData();
+      //assert
+      expect(mockPersonService.lastId).toBe(1);
     });
   });
 });
